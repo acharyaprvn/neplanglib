@@ -1,33 +1,14 @@
-import sys, codecs, string, re
+import sys, codecs, re
 
-punctList = [x for x in string.punctuation]
-
-def addPunct():
-	"""
-	A function to add additional punctuations other than standard English punctuations provided by string.punctuation
-	"""
-	newPunctList = ['|']
-	for x in newPunctList:
-		punctList.append(x)
-
-
-def removePunct():
-	"""
-	A function to remove unnecessary punctuations provided by string.punctuation
-	"""
-	delPunctList = ['.',':','-']
-	for x in delPunctList:
-		punctList.remove(x)
+punctList = ['!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '/', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~']
 
 
 def punctListToString():
 	"""
-	A function that adds, removes and converts the puncuations List into a string
+	A function that converts the puncuations List into a string
 
 	returns: a string
 	"""
-	addPunct()
-	removePunct()
 	punctString = ''.join(punctList)	
 	return punctString
 
