@@ -12,7 +12,7 @@ def punctListToString():
 	punctString = ''.join(punctList)	
 	return punctString
 
-def tokenize(line):
+def tokenizer(line):
 	"""
 	A tokenzer that tokenizes in punctuation boundaries for Nepali language
 
@@ -37,6 +37,6 @@ if __name__ == '__main__':
 		with codecs.open(sys.argv[2],'w','utf-8') as opfile:
 			for line in ipfile.readlines():
 				sep = ' '
-				tokenized_line = sep.join(tokenize(line))
+				tokenized_line = sep.join(tokenizer(line))
 				opfile.write(tokenized_line)
 
