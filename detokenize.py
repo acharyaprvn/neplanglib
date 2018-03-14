@@ -18,6 +18,12 @@ def rightSpaceRemoval(line):
 	detok_line = detok_pattern.sub(r'\1', line)
 	return detok_line
 
+def bothSpaceRemoval(line):
+	pattern = r'\s([' + re.escape(punctGroup1) + r'])\s'
+	detok_pattern =  re.compile(pattern)
+	detok_line = detok_pattern.sub(r'\1', line)
+	return detok_line
+
 def detokenizer(line):
 	"""
 	A detokenzer that detokenizes in punctuation boundaries for Nepali language
