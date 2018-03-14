@@ -24,6 +24,37 @@ def bothSpaceRemoval(line):
 	detok_line = detok_pattern.sub(r'\1', line)
 	return detok_line
 
+def quotesProcess(line):
+	singleQuotesCount = 0
+	doubleQuotesCount = 0
+	lineToList = line.split()
+	#print (lineToList)
+	space = ' '
+	detokLine = ''
+	for word in lineToList:
+		if word == "'":
+			if singleQuotesCount % 2 == 0:
+				detokLine += space + word
+				space = ''
+			else:
+				detokLine += word
+				space = ' '
+			singleQuotesCount += 1
+
+		elif word == '"':
+			if doubleQuotesCount %2 == 0:
+				detokLine += space + word
+				space = ''
+			else:
+				detokLine += word
+				space = ' '
+			doubleQuotesCount += 1
+
+		else:
+			detokLine += space + word
+			space = ' '
+	return detokLine.strip()
+
 def detokenizer(line):
 	"""
 	A detokenzer that detokenizes in punctuation boundaries for Nepali language
@@ -32,7 +63,10 @@ def detokenizer(line):
 	"""
 	#replace tab and additional spaces
 	processed_line = re.sub(r'[ \t]+', ' ', line)
-	
+	quotes = quotesProcess(processed_line)	
+	leftSpaceProcessed = leftSpaceRemoval(quotes)
+	rightSpaceProcessed = rightSpaceRemoval(leftSpaceProcessed)
+	return bothSpaceRemoval(rightSpaceProcessed)
 	
 
 if __name__ == '__main__':
