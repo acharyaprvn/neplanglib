@@ -5,7 +5,11 @@ punctGroup1 = '!%,;?)}]|'
 punctGroup2 = '({['
 punctGroup3 = '/'
 
-
+def leftSpaceRemoval(line):
+	pattern = r'\s([' + re.escape(punctGroup1) + r'])'
+	detok_pattern =  re.compile(pattern)
+	detok_line = detok_pattern.sub(r'\1', line)
+	return detok_line
 
 
 def detokenizer(line):
