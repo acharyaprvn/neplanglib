@@ -1,6 +1,7 @@
+# coding: utf-8
 import sys, codecs, re
 
-punctList = ['!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '/', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~']
+punctList = ['!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '/', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~', '‘', '’', '“', '”']
 
 
 def punctListToString():
@@ -14,7 +15,7 @@ def punctListToString():
 
 def tokenizer(line):
 	"""
-	A tokenzer that tokenizes in punctuation boundaries for Nepali language
+	A tokenizer that tokenizes in punctuation boundaries for Nepali language
 
 	returns: a list of tokens
 	"""
