@@ -19,7 +19,7 @@ def rightSpaceRemoval(line):
 	return detok_line
 
 def bothSpaceRemoval(line):
-	pattern = r'\s([' + re.escape(punctGroup1) + r'])\s'
+	pattern = r'\s([' + re.escape(punctGroup3) + r'])\s'
 	detok_pattern =  re.compile(pattern)
 	detok_line = detok_pattern.sub(r'\1', line)
 	return detok_line
@@ -66,8 +66,8 @@ def detokenizer(line):
 	quotes = quotesProcess(processed_line)	
 	leftSpaceProcessed = leftSpaceRemoval(quotes)
 	rightSpaceProcessed = rightSpaceRemoval(leftSpaceProcessed)
-	return bothSpaceRemoval(rightSpaceProcessed)
-	
+	bothSpaceProcessed = bothSpaceRemoval(rightSpaceProcessed)
+	return bothSpaceProcessed.split()
 
 if __name__ == '__main__':
 	if len(sys.argv) < 3:
@@ -77,5 +77,7 @@ if __name__ == '__main__':
 	with codecs.open(sys.argv[1],'r','utf-8') as ipfile:
 		with codecs.open(sys.argv[2],'w','utf-8') as opfile:
 			for line in ipfile.readlines():
-				opfile.write(detokenizer(line)+'\n')
+				sep = ' '
+				detokenized_line = sep.join(detokenizer(line))
+				opfile.write(detokenized_line)
 

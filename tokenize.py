@@ -26,12 +26,12 @@ def tokenizer(line):
 	tok_line = tok_pattern.sub(r' \1 ', line)
 	#replace tab and additional spaces
 	processed_line = re.sub(r'[ \t]+', ' ', tok_line)
-	return processed_line.strip(' ').split(' ')
+	return processed_line.strip(' ').split()
 	
 
 if __name__ == '__main__':
 	if len(sys.argv) < 3:
-		print "Usage: python tokenize.py <infile> <outfile>"
+		print ("Usage: python tokenize.py <infile> <outfile>")
 		sys.exit(1)
 
 	with codecs.open(sys.argv[1],'r','utf-8') as ipfile:
