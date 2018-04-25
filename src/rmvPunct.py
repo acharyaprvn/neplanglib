@@ -16,7 +16,7 @@ def rmvPunctuation(line):
 	"""
 	A function to remove punctuation
 
-	returns: a string excluding the punctuations
+	returns: a list of words excluding the punctuations
 	"""
 
 	#replace tab and additional spaces

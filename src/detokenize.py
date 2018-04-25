@@ -59,7 +59,7 @@ def detokenizer(line):
 	"""
 	A detokenzer that detokenizes in punctuation boundaries for Nepali language
 
-	returns: a detokenized string
+	returns: a list of detokenized words
 	"""
 	#replace tab and additional spaces
 	processed_line = re.sub(r'[ \t]+', ' ', line)

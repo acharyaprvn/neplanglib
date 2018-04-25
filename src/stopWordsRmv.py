@@ -5,7 +5,7 @@ def stopWordsRemoval(line):
 	"""
 	A function to remove stop words
 
-	returns: a string excluding stop words
+	returns: a list of words excluding stop words
 	"""
 	words = re.findall(r'\S+|\n',line)
 	for word in words:
