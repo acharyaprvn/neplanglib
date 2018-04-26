@@ -1,5 +1,6 @@
 # coding: utf-8
 import sys, codecs, re
+from tokenize import tokenizer
 
 def stopWordsRemoval(line):
 	"""
@@ -7,7 +8,7 @@ def stopWordsRemoval(line):
 
 	returns: a list of words excluding stop words
 	"""
-	words = re.findall(r'\S+|\n',line)
+	words = tokenizer(line)
 	for word in words:
 		if word in stopWordsList:
 			words.remove(word)
@@ -19,7 +20,7 @@ if __name__ == '__main__':
 		print ("Usage: python stopWordsRmv.py <infile> <outfile>")
 		sys.exit(1)
 
-	with codecs.open('stopWords.txt','r','utf-8') as stopwords:
+	with codecs.open('../utilis/stopwords.txt','r','utf-8') as stopwords:
 		stopWordsList = stopwords.read().splitlines()
 
 	with codecs.open(sys.argv[1],'r','utf-8') as ipfile:
