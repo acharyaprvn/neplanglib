@@ -1,16 +1,7 @@
 # coding: utf-8
 import sys, codecs, re
 
-punctList = ['!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '/', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~', '‘', '’', '“', '”']
-
-def punctListToString():
-	"""
-	A function that converts the puncuations List into a string
-
-	returns: a string
-	"""
-	punctString = ''.join(punctList)	
-	return punctString
+punctList = ['!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '/', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~', u'\u0964']
 
 def rmvPunctuation(line):
 	"""
@@ -21,11 +12,11 @@ def rmvPunctuation(line):
 
 	#replace tab and additional spaces
 	processed_line = re.sub(r'[ \t]+', ' ', line)
-	punct = punctListToString()
+	punct = ''.join(punctList)
 	pattern = r'([' + re.escape(punct) + r'])'
 	rmv_pattern =  re.compile(pattern)
 	processed_line = rmv_pattern.sub(r'', processed_line)
-	return processed_line.split()
+	return processed_line.split(' ')
 	
 
 if __name__ == '__main__':

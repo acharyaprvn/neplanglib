@@ -1,7 +1,7 @@
 # coding: utf-8
 import sys, codecs, re
 
-punctGroup1 = '!%,;?)}]|'
+punctGroup1 = '!%,;?)}]'+u'\u0964'
 punctGroup2 = '({['
 punctGroup3 = '/'
 
@@ -53,7 +53,7 @@ def quotesProcess(line):
 		else:
 			detokLine += space + word
 			space = ' '
-	return detokLine.strip()
+	return detokLine.strip(' ')+'\n'
 
 def detokenizer(line):
 	"""
@@ -67,7 +67,7 @@ def detokenizer(line):
 	leftSpaceProcessed = leftSpaceRemoval(quotes)
 	rightSpaceProcessed = rightSpaceRemoval(leftSpaceProcessed)
 	bothSpaceProcessed = bothSpaceRemoval(rightSpaceProcessed)
-	return bothSpaceProcessed.split()
+	return bothSpaceProcessed.split(' ')
 
 if __name__ == '__main__':
 	if len(sys.argv) < 3:
